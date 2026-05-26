@@ -379,7 +379,6 @@ function Gauge({ pct: p, label, warn }) {
   );
 }
 
-// Donut chart component
 function Donut({ segments, size = 180, thickness = 24, children }) {
   const r = (size - thickness) / 2;
   const circ = 2 * Math.PI * r;
@@ -535,164 +534,111 @@ export default function Dashboard() {
     setTimeout(() => setLoaded(true), 60);
   }, []);
 
-  const [metaVendas, setMetaVendas] = useLS("metaVendas", 250000);
-  const [saldoCaixa, setSaldoCaixa] = useLS("saldoCaixa", 284750);
-  const [metaFatAnual, setMetaFatAnual] = useLS("metaFatAnual", 2400000);
-  const [metaCaixaAnual, setMetaCaixaAnual] = useLS("metaCaixaAnual", 500000);
+  // ── DADOS ATUALIZADOS VIA JSON 25/05/2026 ──
+  const [metaVendas, setMetaVendas] = useLS("metaVendas", 1300000);
+  const [saldoCaixa, setSaldoCaixa] = useLS("saldoCaixa", 450321.53);
+  const [metaFatAnual, setMetaFatAnual] = useLS("metaFatAnual", 20000000);
+  const [metaCaixaAnual, setMetaCaixaAnual] = useLS("metaCaixaAnual", 5000000);
 
   const [metasMensais, setMetasMensais] = useLS("metasMensais", [
     {
       mes: "Jan",
-      metaFat: 180000,
-      realFat: 165000,
-      metaCaixa: 30000,
-      realCaixa: 28000,
+      metaFat: 645000,
+      realFat: 645000,
+      metaCaixa: 0,
+      realCaixa: 175000,
     },
     {
       mes: "Fev",
-      metaFat: 185000,
-      realFat: 172000,
-      metaCaixa: 35000,
-      realCaixa: 31000,
+      metaFat: 657000,
+      realFat: 657000,
+      metaCaixa: 0,
+      realCaixa: 179000,
     },
     {
       mes: "Mar",
-      metaFat: 190000,
-      realFat: 158000,
-      metaCaixa: 38000,
-      realCaixa: 13000,
+      metaFat: 1001000,
+      realFat: 1001000,
+      metaCaixa: 550000,
+      realCaixa: 550000,
     },
     {
       mes: "Abr",
-      metaFat: 200000,
-      realFat: 181000,
-      metaCaixa: 42000,
-      realCaixa: 42000,
+      metaFat: 1200000,
+      realFat: 876083,
+      metaCaixa: 800000,
+      realCaixa: 603175,
     },
     {
       mes: "Mai",
-      metaFat: 210000,
+      metaFat: 1300000,
       realFat: 189420,
-      metaCaixa: 45000,
-      realCaixa: 47120,
+      metaCaixa: 1050000,
+      realCaixa: 0,
     },
-    { mes: "Jun", metaFat: 210000, realFat: 0, metaCaixa: 45000, realCaixa: 0 },
-    { mes: "Jul", metaFat: 200000, realFat: 0, metaCaixa: 42000, realCaixa: 0 },
-    { mes: "Ago", metaFat: 205000, realFat: 0, metaCaixa: 43000, realCaixa: 0 },
-    { mes: "Set", metaFat: 210000, realFat: 0, metaCaixa: 45000, realCaixa: 0 },
-    { mes: "Out", metaFat: 215000, realFat: 0, metaCaixa: 45000, realCaixa: 0 },
-    { mes: "Nov", metaFat: 220000, realFat: 0, metaCaixa: 45000, realCaixa: 0 },
-    { mes: "Dez", metaFat: 175000, realFat: 0, metaCaixa: 45000, realCaixa: 0 },
+    {
+      mes: "Jun",
+      metaFat: 1600000,
+      realFat: 0,
+      metaCaixa: 1350000,
+      realCaixa: 0,
+    },
+    {
+      mes: "Jul",
+      metaFat: 1800000,
+      realFat: 0,
+      metaCaixa: 1750000,
+      realCaixa: 0,
+    },
+    {
+      mes: "Ago",
+      metaFat: 2000000,
+      realFat: 0,
+      metaCaixa: 2250000,
+      realCaixa: 0,
+    },
+    {
+      mes: "Set",
+      metaFat: 2300000,
+      realFat: 0,
+      metaCaixa: 2800000,
+      realCaixa: 0,
+    },
+    {
+      mes: "Out",
+      metaFat: 2497000,
+      realFat: 0,
+      metaCaixa: 3450000,
+      realCaixa: 0,
+    },
+    {
+      mes: "Nov",
+      metaFat: 2500000,
+      realFat: 0,
+      metaCaixa: 4150000,
+      realCaixa: 0,
+    },
+    {
+      mes: "Dez",
+      metaFat: 2400000,
+      realFat: 0,
+      metaCaixa: 5000000,
+      realCaixa: 0,
+    },
   ]);
   const updMeta = (i, k, v) =>
     setMetasMensais((a) => a.map((r, j) => (j === i ? { ...r, [k]: v } : r)));
 
   const [fluxo, setFluxo] = useLS("fluxo", [
-    { mes: "Jan", entrada: 165000, saida: 138000 },
-    { mes: "Fev", entrada: 172000, saida: 141000 },
-    { mes: "Mar", entrada: 158000, saida: 145000 },
-    { mes: "Abr", entrada: 181000, saida: 139000 },
-    { mes: "Mai", entrada: 189420, saida: 142300 },
+    { mes: "Jan", entrada: 645000, saida: 470000 },
+    { mes: "Fev", entrada: 657000, saida: 478000 },
+    { mes: "Mar", entrada: 1001000, saida: 744000 },
+    { mes: "Abr", entrada: 876083, saida: 770181 },
   ]);
 
-  const [inadimplentes, setInadimplentes] = useLS("inadimplentes", [
-    {
-      id: 1,
-      cliente: "Madeiras Sul Ltda",
-      valor: 12500,
-      dias: 45,
-      status: "Protestado",
-    },
-    {
-      id: 2,
-      cliente: "Comercial Norte ME",
-      valor: 8900,
-      dias: 32,
-      status: "Em cobrança",
-    },
-    {
-      id: 3,
-      cliente: "Tech Solutions SA",
-      valor: 7200,
-      dias: 28,
-      status: "Em cobrança",
-    },
-    {
-      id: 4,
-      cliente: "Posto Central",
-      valor: 6800,
-      dias: 60,
-      status: "Protestado",
-    },
-    {
-      id: 5,
-      cliente: "Restaurante Beira Mar",
-      valor: 4990,
-      dias: 15,
-      status: "Atrasado",
-    },
-    {
-      id: 6,
-      cliente: "Auto Peças JP",
-      valor: 4200,
-      dias: 90,
-      status: "Protestado",
-    },
-    {
-      id: 7,
-      cliente: "Farmácia Vida",
-      valor: 3300,
-      dias: 22,
-      status: "Atrasado",
-    },
-  ]);
+  const [inadimplentes, setInadimplentes] = useLS("inadimplentes", []);
 
-  const [contas, setContas] = useLS("contas", [
-    {
-      id: 1,
-      conta: "Aluguel",
-      valor: 18000,
-      venc: "10/06",
-      status: "A vencer",
-    },
-    {
-      id: 2,
-      conta: "Folha de Pagamento",
-      valor: 32000,
-      venc: "05/06",
-      status: "A vencer",
-    },
-    {
-      id: 3,
-      conta: "Energia Elétrica",
-      valor: 4200,
-      venc: "15/06",
-      status: "A vencer",
-    },
-    {
-      id: 4,
-      conta: "Internet / Telecom",
-      valor: 1800,
-      venc: "20/06",
-      status: "A vencer",
-    },
-    {
-      id: 5,
-      conta: "Contador",
-      valor: 3500,
-      venc: "10/06",
-      status: "A vencer",
-    },
-    { id: 6, conta: "Seguros", valor: 2950, venc: "01/06", status: "Pago" },
-    {
-      id: 7,
-      conta: "Software / SaaS",
-      valor: 4200,
-      venc: "05/06",
-      status: "Pago",
-    },
-    { id: 8, conta: "Água", valor: 1800, venc: "12/06", status: "A vencer" },
-  ]);
+  const [contas, setContas] = useLS("contas", []);
 
   const [vendedores, setVendedores] = useLS("vendedores", [
     { id: 1, nome: "Carlos", meta: 60000, realizado: 52000 },
@@ -813,9 +759,8 @@ export default function Dashboard() {
     },
   ]);
 
-  // ── COMERCIAL + RECEBIDOS (merged) ──
-  const [recebidoOuro, setRecebidoOuro] = useLS("recebidoOuro", 112000);
-  const [recebidoVFF, setRecebidoVFF] = useLS("recebidoVFF", 77420);
+  const [recebidoOuro, setRecebidoOuro] = useLS("recebidoOuro", 239679.56);
+  const [recebidoVFF, setRecebidoVFF] = useLS("recebidoVFF", 229797.14);
 
   const [quadroTotal, setQuadroTotal] = useLS("quadroTotal", 42);
   const [folhaMensal, setFolhaMensal] = useLS("folhaMensal", 148000);
@@ -853,12 +798,9 @@ export default function Dashboard() {
   const projFat = mesesP > 0 ? (totalRealFat / mesesP) * 12 : 0;
   const totalEnt12 = rhMeses.reduce((s, m) => s + m.entradas, 0);
   const totalSai12 = rhMeses.reduce((s, m) => s + m.saidas, 0);
-
-  // Donut segments for comercial
   const pctOuro = metaVendas > 0 ? (recebidoOuro / metaVendas) * 100 : 0;
   const pctVFF = metaVendas > 0 ? (recebidoVFF / metaVendas) * 100 : 0;
   const pctGap = Math.max(0, 100 - pctOuro - pctVFF);
-
   const barMax = Math.max(...fluxo.map((d) => Math.max(d.entrada, d.saida)), 1);
   const nid = useRef(200);
   const nn = () => ++nid.current;
@@ -897,6 +839,43 @@ export default function Dashboard() {
     { item: "(-) Depreciação", v: -dep, h: false },
     { item: "Lucro Operacional", v: lop, h: true },
   ];
+
+  // ── EXPORTAR JSON ──
+  const handleExportJSON = () => {
+    const data = {
+      exportadoEm: new Date().toLocaleString("pt-BR"),
+      versao: "1.0",
+      configuracoes: {
+        metaVendas,
+        saldoCaixa,
+        metaFatAnual,
+        metaCaixaAnual,
+        recebidoOuro,
+        recebidoVFF,
+        quadroTotal,
+        folhaMensal,
+        absenteismo,
+      },
+      metasMensais,
+      fluxoCaixa: fluxo,
+      inadimplentes,
+      contasFixas: contas,
+      vendedores,
+      distratos,
+      rh: { entradas, saidas, evolucaoMensal: rhMeses },
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `dashboard_financeiro_${new Date()
+      .toISOString()
+      .slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   const tabs = [
     { id: "visao", label: "Visão Geral" },
@@ -1507,7 +1486,7 @@ export default function Dashboard() {
           </div>
         )}
 
-        {/* ═══ COMERCIAL (merged with A Receber) ═══ */}
+        {/* ═══ COMERCIAL ═══ */}
         {tab === "comercial" && (
           <div style={col}>
             <div style={grid("repeat(auto-fit, minmax(180px, 1fr))")}>
@@ -1548,9 +1527,7 @@ export default function Dashboard() {
                 sub={gapMeta <= 0 ? "Meta atingida!" : "falta vender"}
               />
             </div>
-
             <div style={grid("1fr 1fr")}>
-              {/* DONUT */}
               <Sec title="Meta vs Recebido">
                 <div
                   style={{
@@ -1636,8 +1613,6 @@ export default function Dashboard() {
                   </span>
                 </div>
               </Sec>
-
-              {/* VALORES POR PRODUTO */}
               <Sec title="Recebido por Produto">
                 <div
                   style={{
@@ -1705,7 +1680,6 @@ export default function Dashboard() {
                       />
                     </div>
                   </div>
-
                   <div
                     style={{
                       background: T.bg,
@@ -1767,8 +1741,6 @@ export default function Dashboard() {
                 </div>
               </Sec>
             </div>
-
-            {/* GAP DETAIL */}
             <Sec title="Resumo">
               <div
                 style={{
@@ -2821,6 +2793,8 @@ export default function Dashboard() {
           </div>
         )}
       </div>
+
+      {/* ═══ RODAPÉ ═══ */}
       <div
         style={{
           padding: "16px 24px",
@@ -2832,10 +2806,38 @@ export default function Dashboard() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          gap: 16,
+          gap: 12,
+          flexWrap: "wrap",
         }}
       >
         <span>Dados salvos automaticamente no navegador</span>
+        <button
+          onClick={handleExportJSON}
+          style={{
+            background: `${T.gold}18`,
+            border: `1px solid ${T.goldDim}`,
+            borderRadius: 4,
+            color: T.gold,
+            fontSize: 10,
+            padding: "4px 12px",
+            cursor: "pointer",
+            fontWeight: 600,
+            letterSpacing: 0.5,
+            display: "flex",
+            alignItems: "center",
+            gap: 5,
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = `${T.gold}30`;
+            e.currentTarget.style.borderColor = T.gold;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = `${T.gold}18`;
+            e.currentTarget.style.borderColor = T.goldDim;
+          }}
+        >
+          ↓ Exportar JSON
+        </button>
         <button
           onClick={() => {
             if (confirm("Apagar todos os dados e voltar ao padrão?")) {
@@ -2851,16 +2853,16 @@ export default function Dashboard() {
             borderRadius: 4,
             color: T.textDim,
             fontSize: 10,
-            padding: "3px 10px",
+            padding: "4px 10px",
             cursor: "pointer",
           }}
           onMouseEnter={(e) => {
-            e.target.style.borderColor = T.red;
-            e.target.style.color = T.red;
+            e.currentTarget.style.borderColor = T.red;
+            e.currentTarget.style.color = T.red;
           }}
           onMouseLeave={(e) => {
-            e.target.style.borderColor = T.border;
-            e.target.style.color = T.textDim;
+            e.currentTarget.style.borderColor = T.border;
+            e.currentTarget.style.color = T.textDim;
           }}
         >
           Resetar Dados
